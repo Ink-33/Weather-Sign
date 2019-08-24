@@ -11,6 +11,6 @@
 2:增加了对使用Cloudflare站点的支持(在index.php中uncommit对应参数)</br>
 3:更换了背景图片与默认字体(现使用的是杨任东竹石体，免费商用)</br>
 4:增加了调用量统计功能(<a href="https://weas.quhyu.xyz/countershow.php/">DEMO</a>)</br>
-5:我修改后的IP-Sign<a href="https://github.com/Ink-33/IP-Sign/">传送门</a>
+5:我修改后的IP-Sign(<a href="https://github.com/Ink-33/IP-Sign/">传送门</a>)
 <h2>我的博客</h2>
 <a href="https://www.quhyu.xyz/">Ink33&ampLh Studio</a>
