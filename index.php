@@ -6,7 +6,7 @@ $weekarray=array('日','一','二','三','四','五','六'); //先定义一个�
 
 //获取来路IP
 //$ip = $_SERVER['HTTP_CF_CONNECTING_IP'];//使用Cloudflare请去掉本行注释，其它CDN请查阅CDN提供商的文档
-$ip = $_SERVER['REMOTE_ADDR']//若使用上一行配置请注释本行
+$ip = $_SERVER['REMOTE_ADDR'];//若使用上一行配置请注释本行
 
 //调用数统计
 $fileName = 'showcounter.txt';
@@ -27,6 +27,9 @@ if (!is_file($fileName)) {
     fwrite($file, $content);
     fclose($file);
 }
+
+//调用量输出
+$count = file_get_contents($fileName);
 
 //获取当前url
 $url = $_SERVER['HTTP_REFERER']; //获取完整的来路URL
@@ -67,15 +70,17 @@ $cloud = $now['cloud'];
 $black = ImageColorAllocate($im, 0,0,0);//定义黑色的值
 $red = ImageColorAllocate($im, 255,0,0);//红色
 $aqua = ImageColorAllocate($im, 1,184,255);//水色
+$muse = ImageColorAllocate($im, 233, 80, 175);//缪色
+$fav = ImageColorAllocate($im, 0,150,255);//好康的
 $font = 'yydzst.ttf';//加载字体
 
 //输出
-imagettftext($im, 17, 0, 10, 35, $aqua, $font,'来自'.$country.''.$region.''.$city.'的朋友');
-imagettftext($im, 16, 0, 10, 72, $aqua, $font, '今天是'.date('Y年n月j日').' 星期'.$weekarray[date('w')]);//当前时间添加到图片
-imagettftext($im, 16, 0, 10, 104, $aqua, $font,'气温'.$tmp.'℃，体感温度'.$fl.'℃，相对湿度'.$hum.'%');
-imagettftext($im, 16, 0, 10, 140, $aqua, $font,'风向'.$wind_sc.'，风力'.$wind_sc.'，风速'.$wind_spd.'km/h');
-imagettftext($im, 16, 0, 10, 175, $aqua, $font,'降水量'.$pcpn.'，能见度'.$vis.'km，云量'.$cloud);
-imagettftext($im, 16, 0, 10, 205, $aqua, $font,'感谢您访问'.$wangzhi); 
+imagettftext($im, 17, 0, 10, 35, $muse, $font,'来自'.$country.''.$region.''.$city.'的朋友');
+imagettftext($im, 16, 0, 10, 72, $muse, $font, '今天是'.date('Y年n月j日').' 星期'.$weekarray[date('w')]);//当前时间添加到图片
+imagettftext($im, 16, 0, 10, 104, $muse, $font,'气温'.$tmp.'℃，体感温度'.$fl.'℃，相对湿度'.$hum.'%');
+imagettftext($im, 16, 0, 10, 140, $muse, $font,'风向'.$wind_sc.'，风力'.$wind_sc.'，风速'.$wind_spd.'km/h');
+imagettftext($im, 16, 0, 10, 175, $muse, $font,'降水量'.$pcpn.'，能见度'.$vis.'km，云量'.$cloud);
+imagettftext($im, 14, 0, 10, 205, $fav, $font,'感谢访问'.$wangzhi.',签名已被调用'.$count.'次'); 
 ImageGif($im);
 ImageDestroy($im);
 ?>
