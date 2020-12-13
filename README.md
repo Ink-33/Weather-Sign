@@ -1,4 +1,6 @@
-# Weather-Sign
+# 说明 
+由于和风天气API已发布v7版本，本项目使用的v6版即将停止支持，且本人精力有限~~(弃坑PHP)~~，固本项目即日起Archived，感谢大家的关注！
+# Weather-Sign 
 生成带来访者的地理位置(基于IP)，当地实况天气的图片。</br>
 效果如下(此处可能会显示Github的地理位置)</br>
 <a href="https://weas.quhyu.xyz/" target="_blank"><img src="https://weas.quhyu.xyz/"/></a>
